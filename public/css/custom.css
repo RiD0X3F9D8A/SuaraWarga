@@ -1,0 +1,297 @@
+/* 
+   SISTEM RT - MODERN UI DESIGN SYSTEM 
+   Theme: "Community Harmony"
+   Keywords: Clean, Trustworthy, Modern, Inviting
+*/
+
+:root {
+    /* Color Palette */
+    --primary: #0F766E;
+    /* Teal 700 - Tenang & Terpercaya */
+    --primary-light: #14B8A6;
+    /* Teal 500 */
+    --primary-dark: #0F5132;
+    /* Green 900 */
+
+    --accent: #F59E0B;
+    /* Amber 500 - Hangat & Aktif */
+    --accent-hover: #D97706;
+    /* Amber 600 */
+
+    --bg-body: #F3F4F6;
+    /* Cool Gray 100 */
+    --bg-card: #FFFFFF;
+
+    --text-main: #1F2937;
+    /* Gray 800 */
+    --text-muted: #6B7280;
+    /* Gray 500 */
+
+    /* Effects */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius-lg: 1rem;
+    /* 16px */
+    --radius-md: 0.75rem;
+    /* 12px */
+
+    /* Typography */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* ================= GLOBALS ================= */
+body {
+    background-color: var(--bg-body);
+    font-family: var(--font-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding-bottom: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+/* ================= NAVBAR ================= */
+.navbar-system {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    box-shadow: var(--shadow-md);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    margin: 0 0.25rem;
+    padding: 0.5rem 1rem !important;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+
+/* ================= CARDS ================= */
+.card {
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    background: var(--bg-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Header variant for cards */
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 1.25rem 1.5rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+    padding: 0.6rem 1.25rem;
+    border-radius: 50px;
+    /* Pill shape */
+    font-weight: 500;
+    font-family: var(--font-heading);
+    /* Buttons fit headers better */
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-light);
+    border-color: var(--primary-light);
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+}
+
+.btn-success {
+    background-color: #10B981;
+    /* Emerald 500 */
+    border: none;
+}
+
+.btn-warning {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: var(--accent-hover);
+    color: white;
+}
+
+/* ================= FORMS ================= */
+.form-control,
+.form-select {
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    border: 1px solid #E5E7EB;
+    background-color: #F9FAFB;
+    transition: all 0.2s;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #FFF;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1);
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* ================= ALERTS & BADGES ================= */
+.alert {
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.badge {
+    padding: 0.5em 0.8em;
+    border-radius: 6px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Special Status Badges */
+.bg-status-submitted {
+    background-color: #E0F2FE;
+    color: #0369A1;
+}
+
+/* Light Blue */
+.bg-status-approved {
+    background-color: #DCFCE7;
+    color: #166534;
+}
+
+/* Light Green */
+.bg-status-rejected {
+    background-color: #FEE2E2;
+    color: #991B1B;
+}
+
+/* Light Red */
+.bg-status-completed {
+    background-color: #F3E8FF;
+    color: #6B21A8;
+}
+
+/* Light Purple */
+
+/* ================= LOGIN PAGE SPECIFIC ================= */
+body.login-page {
+    background: linear-gradient(135deg, var(--bg-body) 0%, #E2E8F0 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card-wrapper {
+    width: 100%;
+    max-width: 450px;
+}
+
+.brand-logo-login {
+    font-size: 4rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: inline-block;
+    filter: drop-shadow(0 4px 6px rgba(15, 118, 110, 0.2));
+}
+
+/* ================= FOOTER ================= */
+.footer-system {
+    background-color: #FFF;
+    color: var(--text-muted);
+    padding: 2rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid #F3F4F6;
+}
+
+/* ================= UTILITIES ================= */
+.text-primary-custom {
+    color: var(--primary);
+}
+
+.bg-primary-custom {
+    background-color: var(--primary);
+}
+
+.text-accent {
+    color: var(--accent);
+}
+
+/* Animation fade in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-content {
+    animation: fadeIn 0.5s ease-out;
+}
