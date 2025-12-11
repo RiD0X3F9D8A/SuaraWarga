@@ -40,6 +40,10 @@
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
+                        <label class="small text-muted text-uppercase fw-bold">ID User</label>
+                        <p class="fs-5">#{{ $user->id }}</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
                         <label class="small text-muted text-uppercase fw-bold">NIK</label>
                         <p class="fs-5">{{ $user->nik ?? '-' }}</p>
                     </div>

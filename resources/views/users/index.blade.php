@@ -108,6 +108,7 @@
                     <table class="table table-hover table-striped mb-0 align-middle">
                         <thead class="bg-light">
                             <tr>
+                                <th class="px-4 py-3">ID</th>
                                 <th class="px-4 py-3">Nama</th>
                                 <th class="py-3">Email</th>
                                 <th class="py-3">Role</th>
@@ -119,6 +120,7 @@
                         <tbody>
                             @foreach($users as $user)
                             <tr>
+                                <td class="px-4">#{{ $user->id }}</td>
                                 <td class="px-4">
                                     <div class="d-flex align-items-center">
                                         @if($user->profile_photo_path)
