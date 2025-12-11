@@ -47,6 +47,53 @@ class AspirasiController extends Controller
         return view('aspirasi.my', compact('aspirasis'));
     }
 
+    public function edit($id)
+    {
+        $aspirasi = Aspirasi::findOrFail($id);
+        
+        // Cek kepemilikan dan status
+        if ($aspirasi->user_id !== Auth::id()) {
+            return redirect()->route('aspirasi.my')
+                ->with('error', 'Anda tidak memiliki akses untuk mengedit aspirasi ini.');
+        }
+        
+        if ($aspirasi->status !== 'submitted') {
+            return redirect()->route('aspirasi.my')
+                ->with('error', 'Aspirasi yang sudah ditanggapi atau diproses tidak dapat diedit.');
+        }
+        
+        return view('aspirasi.edit', compact('aspirasi'));
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $aspirasi = Aspirasi::findOrFail($id);
+        
+        // Cek kepemilikan dan status
+        if ($aspirasi->user_id !== Auth::id()) {
+            return redirect()->route('aspirasi.my')
+                ->with('error', 'Anda tidak memiliki akses untuk mengedit aspirasi ini.');
+        }
+        
+        if ($aspirasi->status !== 'submitted') {
+            return redirect()->route('aspirasi.my')
+                ->with('error', 'Aspirasi yang sudah ditanggapi atau diproses tidak dapat diedit.');
+        }
+        
+        $request->validate([
+            'judul' => 'required|string|max:200|min:5',
+            'isi' => 'required|string|min:10'
+        ]);
+        
+        $aspirasi->update([
+            'judul' => $request->judul,
+            'isi' => $request->isi
+        ]);
+        
+        return redirect()->route('aspirasi.my')
+            ->with('success', 'Aspirasi berhasil diperbarui!');
+    }
+
     public function publicIndex()
     {
         $aspirasis = Aspirasi::with('user')

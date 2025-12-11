@@ -99,6 +99,9 @@
                             </a>
                             
                             @if($aspirasi->isSubmitted())
+                                <a href="{{ route('aspirasi.edit', $aspirasi->id) }}" class="btn btn-sm btn-outline-warning ms-1">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </a>
                                 <span class="badge bg-warning ms-2">
                                     <i class="bi bi-clock"></i> Menunggu persetujuan admin
                                 </span>
