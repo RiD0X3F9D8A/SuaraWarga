@@ -102,6 +102,10 @@
                                 <a href="{{ route('aspirasi.edit', $aspirasi->id) }}" class="btn btn-sm btn-outline-warning ms-1">
                                     <i class="bi bi-pencil"></i> Edit
                                 </a>
+                                <button type="button" class="btn btn-sm btn-outline-danger ms-1" 
+                                        onclick="confirmDelete('{{ $aspirasi->id }}', '{{ addslashes($aspirasi->judul) }}')">
+                                    <i class="bi bi-trash"></i> Hapus
+                                </button>
                                 <span class="badge bg-warning ms-2">
                                     <i class="bi bi-clock"></i> Menunggu persetujuan admin
                                 </span>
@@ -114,4 +118,38 @@
         </div>
     @endif
 </div>
+
+<!-- Modal Konfirmasi Hapus -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger"><i class="bi bi-exclamation-triangle"></i> Konfirmasi Penghapusan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah Anda yakin ingin menghapus aspirasi ini?</p>
+                <p class="fw-bold" id="deleteTitle"></p>
+                <p class="text-muted small">Tindakan ini tidak dapat dibatalkan.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <form id="deleteForm" method="POST" action="">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Ya, Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function confirmDelete(id, title) {
+    const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+    document.getElementById('deleteTitle').textContent = '"' + title + '"';
+    document.getElementById('deleteForm').action = '/aspirasi/' + id + '/batal';
+    modal.show();
+}
+</script>
 @endsection

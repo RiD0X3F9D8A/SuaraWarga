@@ -94,6 +94,27 @@ class AspirasiController extends Controller
             ->with('success', 'Aspirasi berhasil diperbarui!');
     }
 
+    public function cancel($id)
+    {
+        $aspirasi = Aspirasi::findOrFail($id);
+        
+        // Cek kepemilikan dan status
+        if ($aspirasi->user_id !== Auth::id()) {
+            return redirect()->route('aspirasi.my')
+                ->with('error', 'Anda tidak memiliki akses untuk menghapus aspirasi ini.');
+        }
+        
+        if ($aspirasi->status !== 'submitted') {
+            return redirect()->route('aspirasi.my')
+                ->with('error', 'Aspirasi yang sudah ditanggapi atau diproses tidak dapat dihapus.');
+        }
+        
+        $aspirasi->delete();
+        
+        return redirect()->route('aspirasi.my')
+            ->with('success', 'Aspirasi berhasil dihapus.');
+    }
+
     public function publicIndex()
     {
         $aspirasis = Aspirasi::with('user')

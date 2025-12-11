@@ -54,11 +54,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/aspirasi/saya', [AspirasiController::class, 'myAspirasi'])->name('aspirasi.my');
     Route::get('/aspirasi/semua', [AspirasiController::class, 'publicIndex'])->name('aspirasi.public');
     Route::get('/aspirasi/{id}', [AspirasiController::class, 'show'])->name('aspirasi.show');
-    
-    // ASPIRASI - UNTUK ADMIN (TANPA MIDDLEWARE 'admin')
     Route::get('/aspirasi/{id}/edit', [AspirasiController::class, 'edit'])->name('aspirasi.edit');
     Route::put('/aspirasi/{id}', [AspirasiController::class, 'update'])->name('aspirasi.update');
+    Route::delete('/aspirasi/{id}/batal', [AspirasiController::class, 'cancel'])->name('aspirasi.cancel');
     
+    // ASPIRASI - UNTUK ADMIN (TANPA MIDDLEWARE 'admin')
     Route::get('/admin/aspirasi', [AspirasiController::class, 'index'])->name('aspirasi.index');
     Route::post('/admin/aspirasi/{id}/approve', [AspirasiController::class, 'approve'])->name('aspirasi.approve');
     Route::post('/admin/aspirasi/{id}/reject', [AspirasiController::class, 'reject'])->name('aspirasi.reject');
